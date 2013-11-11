@@ -1,0 +1,260 @@
+<html>
+<head>
+	<title>My drawing</title>
+	<style type="text/css">
+    #frame {
+	  width: 600px;
+	  margin-left: auto;
+	  margin-right: auto;
+	  margin-top: 10px
+	  }
+	p {
+	  font-family: "MS serif, New York, serif";
+	  font-size: 1.9em;
+	  line-height: 1.5em;
+	  text-align: center;
+	  margin-right: 10px;
+	  color: #293324;
+	  }
+	  </style>
+</head>
+<body>
+
+<div id="frame">
+
+<p>Fanciful Flower</p>
+
+<canvas id="canvasId" width="600px" height="500px"></canvas>
+
+    <script type="text/javascript">
+		var canvas = document.getElementById("canvasId");
+        var context = canvas.getContext("2d");
+		
+		//draw background
+		context.beginPath();
+		context.rect(0,0,600,500);
+		//context.fillStyle="#F7A852";
+		//context.fill();
+		
+		// add linear gradient
+        var grd = context.createLinearGradient(0, 0, 600, 500);
+        grd.addColorStop(0, "#C2EA7F");
+        grd.addColorStop(1, "#829D55");
+        context.fillStyle = grd;
+        context.fill();
+		
+		//this is the sun
+		function drawSun(x,y,radius)
+		{
+				
+		context.beginPath();
+		context.arc(x,y,radius,0,2*Math.PI,false);
+		context.fillStyle = "#FFE800";
+        context.globalAlpha = .8;
+   	    context.fill();
+   	    context.globalAlpha = 1;
+		}
+
+		drawSun(90,90,65);
+		drawSun(170,140,20);
+		drawSun(200,145,5);
+		
+		//sun's rays
+		var index = 0;
+		while (index<3)
+		{
+		  drawSun(170 + (index*25),190,3+(index*5),0,Math.PI*2,false);
+		  index = index + 1;
+			
+		  context.strokeStyle="#E8CE24";
+		  context.stroke();
+		}
+		
+		 //draw the first cloud
+	      context.beginPath();
+	      context.moveTo(350,50);
+	      context.quadraticCurveTo(370,1,440,40);
+	      context.quadraticCurveTo(500,1,500,70);
+	      context.quadraticCurveTo(560,190,420,170);
+	      context.quadraticCurveTo(405,215,360,180);
+	      context.quadraticCurveTo(300,190,295,150);
+	      context.quadraticCurveTo(290,80,340,80);
+	     
+	      context.fillStyle = "#F8F8F8";
+		  context.globalAlpha = .6;
+   	      context.fill();
+   	      context.globalAlpha = 1;
+   	     
+   	     //draw second cloud
+   	      context.beginPath();
+	      context.moveTo(380,80);
+	      context.quadraticCurveTo(400,39,470,70);
+	      context.quadraticCurveTo(530,47,540,100);
+	      context.quadraticCurveTo(590,220,450,200);
+	      context.quadraticCurveTo(435,235,390,210);
+	      context.quadraticCurveTo(330,220,325,180);
+	      context.quadraticCurveTo(320,110,370,110);
+	     
+	      context.fillStyle = "White";
+		  context.globalAlpha = .65;
+   	      context.fill();
+   	      context.globalAlpha = 1;
+		
+		//here is the flower
+		function drawCircle(x,y,radius,startingAngle)
+		{
+		  context.beginPath();
+		  context.arc(x,y,radius,startingAngle,(2*Math.PI),false);
+		  context.closePath();
+
+		}
+		
+			
+		//top petals
+		  drawCircle(380,295,30,0);
+		  context.fillStyle="#7F667F";
+          context.globalAlpha = .7;
+   	      context.fill();
+   	      context.globalAlpha = 1;
+		  drawCircle(415,315,30,0);
+		  context.fillStyle="#7F667F";
+          context.globalAlpha = .3;
+   	      context.fill();
+   	      context.globalAlpha = 1;
+			
+		//bottom petals
+		  drawCircle(405,305,30,0);
+		  context.fillStyle="#7F667F";
+          context.globalAlpha = .6;
+   	      context.fill();
+   	      context.globalAlpha = 1;
+		  drawCircle(410,355,30,0);
+		  context.fillStyle="#8F7396";
+		  context.fill();
+		  drawCircle(365,375,30,0);
+		  context.fillStyle="#959196";
+		  context.globalAlpha = .4;
+   	      context.fill();
+   	      context.globalAlpha = 1;
+   	      drawCircle(385,370,30,0);
+		  context.fillStyle="#7F667F";
+		  context.globalAlpha = .7;
+   	      context.fill();
+   	      context.globalAlpha = 1;
+		  drawCircle(325,340,30,0);
+		  context.fillStyle="#959196";
+		  context.fill();
+		  drawCircle(335,360,30,0);
+		  context.fillStyle="#959196";
+		  context.fill();
+		  drawCircle(335,300,30,0);
+		  context.fillStyle="#8F7396";
+		  context.fill();
+		  drawCircle(350,290,30,0);
+		  context.fillStyle="#707F66";
+		  context.globalAlpha = .25;
+   	      context.fill();
+   	      context.globalAlpha = 1;
+		
+		
+		  //center of flower
+		  drawCircle(373,330,35,0);
+	      var gradient = context.createRadialGradient(373,330,0,373,330,35);
+   	      gradient.addColorStop(0,"#707F66");
+   	      gradient.addColorStop(1,"#293324");
+   	      context.fillStyle = gradient;
+		  //context.fillStyle="#293324";
+		  context.fill();
+
+		  //Draw a star
+		  context.beginPath();
+		  context.moveTo(140,50);
+		  context.lineTo(200,50);
+		  context.moveTo(150,30);
+		  context.lineTo(190,70);
+		  context.moveTo(170,10);
+		  context.lineTo(170,90);
+		  context.moveTo(190,30);
+		  context.lineTo(150,70);
+		  
+		  //star stroke
+		  context.lineWidth = 2;
+		  context.strokeStyle = "#8F7396";
+		  context.stroke();
+			
+		  //Draw second star
+		  context.beginPath();
+		  context.moveTo(170,80);
+		  context.lineTo(230,80);
+		  context.moveTo(180,60);
+		  context.lineTo(220,100);
+		  context.moveTo(200,40);
+		  context.lineTo(200,120);
+		  context.moveTo(220,60);
+		  context.lineTo(180,100);
+		  //star stroke
+		  context.lineWidth = 2;
+		  context.strokeStyle = "#707F66";
+		  context.globalAlpha = .5;
+   	      context.stroke();
+   	      context.globalAlpha = 1;			
+			
+		//here are the flower's accents
+		function drawCircle(x,y,radius,startingAngle)
+		{
+		  context.beginPath();
+		  context.arc(x,y,radius,startingAngle,2*Math.PI,false);
+		  context.strokeStyle = "#707F66";
+		  context.lineWidth=2;
+		  context.stroke();
+		}
+		
+		var index = 0;
+		while (index<3)
+		{
+			drawCircle(463 + (index*20),322,5+(index*5),0,Math.PI*2,false);
+			index = index + 1;
+			
+			context.fillStyle="#293324";
+			context.fill();
+		}
+		
+		var index = 0;
+		while (index<3)
+		{
+			drawCircle(145 + (index*-35),322,12+(index*5),0,Math.PI*2,false);
+			index = index + 1;
+			var gradient = context.createRadialGradient(135 + (index*-35),315,7+(index*5),4,145 + (index*-35),322,9+(index*5),14);
+   	        gradient.addColorStop(0,"#959196");
+   	        gradient.addColorStop(1,"#293324");
+   	        context.fillStyle = gradient;
+			//context.fillStyle="#8F7396";
+			context.fill();
+		}
+		
+		var index = 0;
+		while (index<5)
+		{
+			drawCircle(270 + (index*-8),322,10+(index*10),0,Math.PI*2,false);
+			index = index + 1;
+		}
+		
+		var index = 0;
+		for (index=0;index<5;index=index+1)
+		{
+			drawCircle(430 + (index*20),255,5+(index*5),0,Math.PI*2,false);
+			index = index + 1;
+		}
+		
+		var index = 0;
+		for (index=0;index<5;index=index+1)
+		{
+			drawCircle(400 + (index*-20),435,5+(index*5),0,Math.PI*2,false);
+			index = index + 1;
+		}
+
+
+	</script>
+</div>
+</body>
+</html>
